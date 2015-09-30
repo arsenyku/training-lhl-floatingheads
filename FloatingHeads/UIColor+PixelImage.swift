@@ -13,10 +13,9 @@ extension UIColor {
     func pixelImage() -> UIImage {
         let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
         UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
         
-        CGContextSetFillColorWithColor(context, CGColor)
-        CGContextFillRect(context, rect)
+        setFill()
+        UIRectFill(rect)
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

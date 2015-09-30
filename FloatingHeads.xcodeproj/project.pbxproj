@@ -94,9 +94,9 @@
 				12D509DE1BBC583E005FC9B8 /* UIColor+FlatColors.swift */,
 				12D509E01BBC5E2C005FC9B8 /* UIColor+PixelImage.swift */,
 				12D509BE1BBC5585005FC9B8 /* Main.storyboard */,
+				12D509C31BBC5585005FC9B8 /* LaunchScreen.storyboard */,
 				12D509DA1BBC5686005FC9B8 /* Floating-Heads.xcassets */,
 				12D509C11BBC5585005FC9B8 /* Assets.xcassets */,
-				12D509C31BBC5585005FC9B8 /* LaunchScreen.storyboard */,
 				12D509C61BBC5585005FC9B8 /* Info.plist */,
 			);
 			path = FloatingHeads;

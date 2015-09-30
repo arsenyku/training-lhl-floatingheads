@@ -21,5 +21,10 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func handleMenuButton(sender: AnyObject) {
+        let controller = FloatingMenuController(fromView: sender as! UIButton)
+        presentViewController(controller, animated: true, completion: nil)
+    }
+    
 }
 
