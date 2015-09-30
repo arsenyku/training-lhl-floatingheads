@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, FloatingMenuDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,18 @@ class ViewController: UIViewController {
 			floatingMenu.floatingButtons .append(floater)
         }
         
+        floatingMenu.delegate = self
+        
         presentViewController(floatingMenu, animated: true, completion: nil)
+    }
+    
+    func floatingCancelButtonPressed(sender: FloatingButton?) {
+        print("CANCEL!")
+    }
+    
+    func floatingMenuButtonPressed(sender: FloatingButton?, index:Int) {
+        print("MENU! Index=\(index)")
+
     }
     
 }

@@ -30,6 +30,11 @@ enum Direction {
     }
 }
 
+protocol FloatingMenuDelegate {
+    func floatingCancelButtonPressed(sender: FloatingButton?)
+    func floatingMenuButtonPressed(sender: FloatingButton?, index:Int)
+}
+
 class FloatingMenuController: UIViewController {
     
     // In FloatingMenuController, add a UIView property called fromView, this 
@@ -52,6 +57,8 @@ class FloatingMenuController: UIViewController {
     
     //an array, buttonItems, to store all your UIButtons
     var floatingButtons = [FloatingButton]()
+    
+    var delegate: FloatingMenuDelegate?
     
     required init?(coder aDecoder: NSCoder) {
         self.fromView = nil
@@ -105,6 +112,9 @@ class FloatingMenuController: UIViewController {
         
             floater.center = menuDirection.offsetPoint(previousButton.center, offset: offset+buttonPadding * CGFloat(index+1))
             view.addSubview(floater)
+
+            floater.addTarget(self, action: "menuButtonPressed:", forControlEvents: .TouchUpInside)
+            
             previousButton = floater
         }
 
@@ -120,8 +130,14 @@ class FloatingMenuController: UIViewController {
     }
     
     func closeButtonPressed(sender:FloatingButton!){
-        dismissViewControllerAnimated(true) { () -> Void in
-            	
+        delegate?.floatingCancelButtonPressed(sender)
+        
+
+    }
+    
+    func menuButtonPressed(sender:FloatingButton!){
+        if let index = floatingButtons.indexOf(sender) {
+            delegate?.floatingMenuButtonPressed(sender, index: index)
         }
     }
 
