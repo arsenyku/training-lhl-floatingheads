@@ -38,11 +38,11 @@ class FloatingMenuController: UIViewController {
     //Sets the View Controller’s modalPresentationStyle and modalTransitionStyle
     init(fromView:UIView){
         self.fromView = fromView
-        self.blurredView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Light));
-        self.closeButton = FloatingButton(frame: CGRectMake(0,0,100,100),
+        blurredView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Light));
+        closeButton = FloatingButton(frame: fromView.frame,
             image: UIImage(named: "icon-close")!,
             backgroundColour: UIColor.flatRedColor());
-
+        
         super.init(nibName: nil, bundle: nil)
         
         modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
@@ -54,10 +54,29 @@ class FloatingMenuController: UIViewController {
         //set the blurredView’s frame to the view’s frame
         blurredView.frame = view.frame
         
+        closeButton.addTarget(self, action: "closeButtonPressed:", forControlEvents: .TouchUpInside)
+
         //add the blurredView and closeButton as subviews of the root view
         view.addSubview(blurredView)
         view.addSubview(closeButton)
+        
 
+
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        configureButtons()
+    }
+    
+    //position the closeButton.center to be equal to the center of the fromView
+    func configureButtons(){
+        closeButton.center = fromView.center
+    }
+    
+    func closeButtonPressed(sender:FloatingButton!){
+        dismissViewControllerAnimated(true) { () -> Void in
+            	
+        }
     }
 
 }
