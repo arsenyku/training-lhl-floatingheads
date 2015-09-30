@@ -22,8 +22,18 @@ class ViewController: UIViewController {
 
 
     @IBAction func handleMenuButton(sender: AnyObject) {
-        let controller = FloatingMenuController(fromView: sender as! UIButton)
-        presentViewController(controller, animated: true, completion: nil)
+        
+        let floatingMenu = FloatingMenuController(fromView: sender as! UIButton)
+
+        floatingMenu.buttonPadding = 5
+        
+        for i in 4...8 {
+            let floater = FloatingButton(frame: CGRectMake(0,0,60,60),
+                image: UIImage(named: "model-00\(i)")!, backgroundColour: UIColor.purpleColor())
+			floatingMenu.floatingButtons .append(floater)
+        }
+        
+        presentViewController(floatingMenu, animated: true, completion: nil)
     }
     
 }

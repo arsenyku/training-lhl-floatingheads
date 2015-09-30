@@ -8,6 +8,28 @@
 
 import UIKit
 
+
+enum Direction {
+    case Up
+    case Down
+    case Left
+    case Right
+    
+    
+    func offsetPoint(point: CGPoint, offset: CGFloat) -> CGPoint {
+        switch self {
+        case .Up:
+            return CGPoint(x: point.x, y: point.y - offset)
+        case .Down:
+            return CGPoint(x: point.x, y: point.y + offset)
+        case .Left:
+            return CGPoint(x: point.x - offset, y: point.y)
+        case .Right:
+            return CGPoint(x: point.x + offset, y: point.y)
+        }
+    }
+}
+
 class FloatingMenuController: UIViewController {
     
     // In FloatingMenuController, add a UIView property called fromView, this 
@@ -21,10 +43,19 @@ class FloatingMenuController: UIViewController {
     //Add a FloatingButton, called closeButton, and pass in the image “icon-close” 
     //and flatRedColor for the background colour.
     var closeButton:FloatingButton
+
+    //a button direction, with a default value of Direction.Up
+    var menuDirection: Direction = Direction.Up
+    
+    //a CGFloat for buttonPadding
+    var buttonPadding:CGFloat = 10
+    
+    //an array, buttonItems, to store all your UIButtons
+    var floatingButtons = [FloatingButton]()
     
     required init?(coder aDecoder: NSCoder) {
         self.fromView = nil
-        self.blurredView = nil;
+        self.blurredView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Light));
         self.closeButton = FloatingButton(frame: CGRectMake(0,0,100,100),
             image: UIImage(named: "icon-close")!,
             backgroundColour: UIColor.flatRedColor());
@@ -60,7 +91,22 @@ class FloatingMenuController: UIViewController {
         view.addSubview(blurredView)
         view.addSubview(closeButton)
         
+        var buttonBelow = fromView
+        for (index, floater) in floatingButtons.enumerate() {
+            
+            var offset:CGFloat = 0
+            switch(menuDirection){
+            case Direction.Up, Direction.Down:
+                offset = floater.frame.size.height
+            case Direction.Left, Direction.Right:
+                offset = floater.frame.size.width
 
+            }
+        
+            floater.center = menuDirection.offsetPoint(buttonBelow.center, offset: offset+buttonPadding * CGFloat(index+1))
+            view.addSubview(floater)
+            buttonBelow = floater
+        }
 
     }
 
