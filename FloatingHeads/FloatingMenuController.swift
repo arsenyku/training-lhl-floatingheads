@@ -91,21 +91,21 @@ class FloatingMenuController: UIViewController {
         view.addSubview(blurredView)
         view.addSubview(closeButton)
         
-        var buttonBelow = fromView
+        var previousButton = fromView
         for (index, floater) in floatingButtons.enumerate() {
             
             var offset:CGFloat = 0
             switch(menuDirection){
             case Direction.Up, Direction.Down:
-                offset = floater.frame.size.height
+                offset = previousButton.frame.size.height
             case Direction.Left, Direction.Right:
-                offset = floater.frame.size.width
+                offset = previousButton.frame.size.width
 
             }
         
-            floater.center = menuDirection.offsetPoint(buttonBelow.center, offset: offset+buttonPadding * CGFloat(index+1))
+            floater.center = menuDirection.offsetPoint(previousButton.center, offset: offset+buttonPadding * CGFloat(index+1))
             view.addSubview(floater)
-            buttonBelow = floater
+            previousButton = floater
         }
 
     }

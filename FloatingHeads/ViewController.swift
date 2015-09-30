@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         
         let floatingMenu = FloatingMenuController(fromView: sender as! UIButton)
 
+        floatingMenu.menuDirection = Direction.Up
         floatingMenu.buttonPadding = 5
         
         for i in 4...8 {
