@@ -13,6 +13,7 @@
 		12D509C21BBC5585005FC9B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D509C11BBC5585005FC9B8 /* Assets.xcassets */; };
 		12D509C51BBC5585005FC9B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D509C31BBC5585005FC9B8 /* LaunchScreen.storyboard */; };
 		12D509D01BBC5586005FC9B8 /* FloatingHeadsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D509CF1BBC5586005FC9B8 /* FloatingHeadsTests.swift */; };
+		12D509DB1BBC5686005FC9B8 /* Floating-Heads.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D509DA1BBC5686005FC9B8 /* Floating-Heads.xcassets */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		12D509CB1BBC5586005FC9B8 /* FloatingHeadsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FloatingHeadsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D509CF1BBC5586005FC9B8 /* FloatingHeadsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingHeadsTests.swift; sourceTree = "<group>"; };
 		12D509D11BBC5586005FC9B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12D509DA1BBC5686005FC9B8 /* Floating-Heads.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Floating-Heads.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				12D509BA1BBC5585005FC9B8 /* AppDelegate.swift */,
 				12D509BC1BBC5585005FC9B8 /* ViewController.swift */,
 				12D509BE1BBC5585005FC9B8 /* Main.storyboard */,
+				12D509DA1BBC5686005FC9B8 /* Floating-Heads.xcassets */,
 				12D509C11BBC5585005FC9B8 /* Assets.xcassets */,
 				12D509C31BBC5585005FC9B8 /* LaunchScreen.storyboard */,
 				12D509C61BBC5585005FC9B8 /* Info.plist */,
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12D509C51BBC5585005FC9B8 /* LaunchScreen.storyboard in Resources */,
+				12D509DB1BBC5686005FC9B8 /* Floating-Heads.xcassets in Resources */,
 				12D509C21BBC5585005FC9B8 /* Assets.xcassets in Resources */,
 				12D509C01BBC5585005FC9B8 /* Main.storyboard in Resources */,
 			);
