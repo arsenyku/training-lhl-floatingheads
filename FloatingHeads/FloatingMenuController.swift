@@ -131,8 +131,7 @@ class FloatingMenuController: UIViewController {
     
     func closeButtonPressed(sender:FloatingButton!){
         delegate?.floatingCancelButtonPressed(sender)
-        
-
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func menuButtonPressed(sender:FloatingButton!){
