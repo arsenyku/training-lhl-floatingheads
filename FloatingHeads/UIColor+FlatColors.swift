@@ -22,10 +22,6 @@ extension UIColor {
         return UIColor(red: 0.3132, green: 0.3974, blue: 0.6365, alpha: 1.0)
     }
     
-    class func flatDarkBlueColor() -> UIColor {
-        return UIColor(red: 32/255, green: 40/255, blue: 65/255, alpha: 1.0)
-    }
-    
     class func flatRedColor() -> UIColor {
         return UIColor(red: 0.9115, green: 0.2994, blue: 0.2335, alpha: 1.0)
     }

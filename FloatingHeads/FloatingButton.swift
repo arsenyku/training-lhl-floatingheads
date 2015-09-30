@@ -9,6 +9,16 @@
 import UIKit
 
 class FloatingButton: UIButton {
+    
+	// Initializer that takes in a frame, UIImage, and backgroundColor.
+   	init(frame:CGRect, image:UIImage, backgroundColour:UIColor) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
@@ -26,6 +36,6 @@ class FloatingButton: UIButton {
     	layer.cornerRadius = frame.size.width / 2
         layer.masksToBounds = true
         
-		setBackgroundImage(UIColor.pixelImage(colour: UIColor.flatDarkBlueColor()), forState: UIControlState.Highlighted)
+		setBackgroundImage(backgroundColor!.pixelImage(), forState: UIControlState.Normal)
     }
 }
