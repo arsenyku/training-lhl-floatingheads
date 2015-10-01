@@ -93,45 +93,85 @@ class FloatingMenuController: UIViewController {
         blurredView.frame = view.frame
         
         closeButton.addTarget(self, action: "closeButtonPressed:", forControlEvents: .TouchUpInside)
+        closeButton.center = fromView.center
 
         //add the blurredView and closeButton as subviews of the root view
         view.addSubview(blurredView)
         view.addSubview(closeButton)
-        
-        var previousButton = fromView
-        for (index, floater) in floatingButtons.enumerate() {
-            
-            var offset:CGFloat = 0
-            switch(menuDirection){
-            case Direction.Up, Direction.Down:
-                offset = previousButton.frame.size.height
-            case Direction.Left, Direction.Right:
-                offset = previousButton.frame.size.width
 
-            }
-        
-            floater.center = menuDirection.offsetPoint(previousButton.center, offset: offset+buttonPadding * CGFloat(index+1))
-            view.addSubview(floater)
-
-            floater.addTarget(self, action: "menuButtonPressed:", forControlEvents: .TouchUpInside)
-            
-            previousButton = floater
-        }
 
     }
 
     override func viewWillAppear(animated: Bool) {
-        configureButtons()
+        if (animated){
+            configureButtons(initial: true)
+            UIView.animateWithDuration(1.0) { () -> Void in
+                self.configureButtons(initial:false)
+                
+            }
+        }else{
+        	self.configureButtons(initial:false)
+        }
     }
+
+
     
     //position the closeButton.center to be equal to the center of the fromView
-    func configureButtons(){
-        closeButton.center = fromView.center
+    func configureButtons(initial initial:Bool){
+        if initial {
+            closeButton.alpha = 0
+            closeButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+            
+            for (_, floater) in floatingButtons.enumerate() {
+                
+                floater.center = fromView.center
+                view.addSubview(floater)
+                
+                floater.addTarget(self, action: "menuButtonPressed:", forControlEvents: .TouchUpInside)
+            
+            }
+        }
+        else {
+            closeButton.alpha = 1
+            closeButton.transform = CGAffineTransformIdentity
+        
+            var previousButton = fromView
+            for (index, floater) in floatingButtons.enumerate() {
+                
+                var offset:CGFloat = 0
+                switch(menuDirection){
+                case Direction.Up, Direction.Down:
+                    offset = previousButton.frame.size.height
+                case Direction.Left, Direction.Right:
+                    offset = previousButton.frame.size.width
+                    
+                }
+                
+                floater.center = menuDirection.offsetPoint(previousButton.center, offset: offset+buttonPadding * CGFloat(index+1))
+                view.addSubview(floater)
+                
+                floater.addTarget(self, action: "menuButtonPressed:", forControlEvents: .TouchUpInside)
+                
+                previousButton = floater
+            }
+
+        }
     }
     
     func closeButtonPressed(sender:FloatingButton!){
         delegate?.floatingCancelButtonPressed(sender)
-        dismissViewControllerAnimated(true, completion: nil)
+        
+        
+        configureButtons(initial: false)
+        
+        UIView.animateWithDuration(2.0, animations: { () -> Void in
+            self.configureButtons(initial:true)
+            
+            }) { (Bool) -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        
     }
     
     func menuButtonPressed(sender:FloatingButton!){
