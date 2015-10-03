@@ -10,8 +10,19 @@ import UIKit
 
 class FloatingButton: UIButton {
     
+    var backgroundColourView = UIImageView()
+    var imageViewForZoom = UIImageView()
+    
 	// Initializer that takes in a frame, UIImage, and backgroundColor.
    	init(frame:CGRect, image:UIImage, backgroundColour:UIColor) {
+        backgroundColourView.userInteractionEnabled = false
+        backgroundColourView.image = backgroundColour.pixelImage()
+        backgroundColourView.backgroundColor = backgroundColour
+
+        
+        imageViewForZoom = UIImageView(image: image)
+        imageViewForZoom.userInteractionEnabled = false
+
         super.init(frame: frame)
 
         setImage(image, forState: UIControlState.Normal)
@@ -36,12 +47,25 @@ class FloatingButton: UIButton {
     
     func setup(){
     
-    	//Set the tintColor to whiteColor()
         tintColor = UIColor.whiteColor()
         
-        //Set the button’s layer cornerRadius and maskToBounds
-    	layer.cornerRadius = frame.size.width / 2
-        layer.masksToBounds = true
+        backgroundColourView.frame = self.frame
+        backgroundColourView.layer.cornerRadius = backgroundColourView.frame.size.width / 2
+        backgroundColourView.layer.masksToBounds = true
         
+        imageViewForZoom.frame = imageView!.frame
+        imageViewForZoom.layer.cornerRadius = imageViewForZoom.frame.size.width / 2
+        imageViewForZoom.layer.masksToBounds = true
+
+        insertSubview(backgroundColourView, belowSubview:imageView!)
+        insertSubview(imageViewForZoom, belowSubview:imageView!)
+        
+        layer.cornerRadius = frame.size.width / 2
+        layer.masksToBounds = true
+
+    }
+    
+    func zoomProperties() -> (imageView:UIImageView, backgroundColourView:UIView){
+    	return (imageViewForZoom, self.backgroundColourView)
     }
 }

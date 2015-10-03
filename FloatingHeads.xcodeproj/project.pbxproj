@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120C34721BBE6E0700475EAA /* ZoomingIconTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120C34711BBE6E0700475EAA /* ZoomingIconTransition.swift */; settings = {ASSET_TAGS = (); }; };
+		120C34751BBE6E6100475EAA /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 120C34731BBE6E6100475EAA /* DetailView.storyboard */; settings = {ASSET_TAGS = (); }; };
+		120C34761BBE6E6100475EAA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120C34741BBE6E6100475EAA /* DetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		12D509BB1BBC5585005FC9B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D509BA1BBC5585005FC9B8 /* AppDelegate.swift */; };
 		12D509BD1BBC5585005FC9B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D509BC1BBC5585005FC9B8 /* ViewController.swift */; };
 		12D509C01BBC5585005FC9B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D509BE1BBC5585005FC9B8 /* Main.storyboard */; };
@@ -31,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		120C34711BBE6E0700475EAA /* ZoomingIconTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomingIconTransition.swift; sourceTree = "<group>"; };
+		120C34731BBE6E6100475EAA /* DetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
+		120C34741BBE6E6100475EAA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		12D509B71BBC5585005FC9B8 /* FloatingHeads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FloatingHeads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D509BA1BBC5585005FC9B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12D509BC1BBC5585005FC9B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,12 +94,15 @@
 			isa = PBXGroup;
 			children = (
 				12D509BA1BBC5585005FC9B8 /* AppDelegate.swift */,
-				12D509BC1BBC5585005FC9B8 /* ViewController.swift */,
-				12D509E21BBC64C5005FC9B8 /* FloatingMenuController.swift */,
 				12D509DC1BBC57FF005FC9B8 /* FloatingButton.swift */,
+				12D509BC1BBC5585005FC9B8 /* ViewController.swift */,
+				120C34741BBE6E6100475EAA /* DetailViewController.swift */,
+				12D509E21BBC64C5005FC9B8 /* FloatingMenuController.swift */,
+				120C34711BBE6E0700475EAA /* ZoomingIconTransition.swift */,
 				12D509DE1BBC583E005FC9B8 /* UIColor+FlatColors.swift */,
 				12D509E01BBC5E2C005FC9B8 /* UIColor+PixelImage.swift */,
 				12D509BE1BBC5585005FC9B8 /* Main.storyboard */,
+				120C34731BBE6E6100475EAA /* DetailView.storyboard */,
 				12D509C31BBC5585005FC9B8 /* LaunchScreen.storyboard */,
 				12D509DA1BBC5686005FC9B8 /* Floating-Heads.xcassets */,
 				12D509C11BBC5585005FC9B8 /* Assets.xcassets */,
@@ -194,6 +203,7 @@
 				12D509C51BBC5585005FC9B8 /* LaunchScreen.storyboard in Resources */,
 				12D509DB1BBC5686005FC9B8 /* Floating-Heads.xcassets in Resources */,
 				12D509C21BBC5585005FC9B8 /* Assets.xcassets in Resources */,
+				120C34751BBE6E6100475EAA /* DetailView.storyboard in Resources */,
 				12D509C01BBC5585005FC9B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +228,8 @@
 				12D509BD1BBC5585005FC9B8 /* ViewController.swift in Sources */,
 				12D509BB1BBC5585005FC9B8 /* AppDelegate.swift in Sources */,
 				12D509DD1BBC57FF005FC9B8 /* FloatingButton.swift in Sources */,
+				120C34721BBE6E0700475EAA /* ZoomingIconTransition.swift in Sources */,
+				120C34761BBE6E6100475EAA /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +419,7 @@
 				12D509D61BBC5586005FC9B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		12D509D71BBC5586005FC9B8 /* Build configuration list for PBXNativeTarget "FloatingHeadsTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +428,7 @@
 				12D509D91BBC5586005FC9B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

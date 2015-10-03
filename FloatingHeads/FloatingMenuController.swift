@@ -43,7 +43,7 @@ class FloatingMenuController: UIViewController {
     var fromView:UIView!
     
     //Add a UIVisualEffectView, called blurredView, that sets a UIBlurEffect
-    var blurredView: UIVisualEffectView!
+    var blurredView: UIVisualEffectView?
     
     //Add a FloatingButton, called closeButton, and pass in the image “icon-close” 
     //and flatRedColor for the background colour.
@@ -83,22 +83,24 @@ class FloatingMenuController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
-        modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        modalPresentationStyle = UIModalPresentationStyle.Custom
         modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
     }
     
     
     override func viewDidLoad() {
 
-        view.addSubview(blurredView)
-
+        if (blurredView != nil){
+	        view.addSubview(blurredView!)
+        }
+        
         for (_, floater) in floatingButtons.reverse().enumerate() {
             view.addSubview(floater)
             floater.addTarget(self, action: "menuButtonPressed:", forControlEvents: .TouchUpInside)
         }
         
         //set the blurredView’s frame to the view’s frame
-        blurredView.frame = view.frame
+        blurredView?.frame = view.frame
         
         closeButton.addTarget(self, action: "closeButtonPressed:", forControlEvents: .TouchUpInside)
         closeButton.center = fromView.center
@@ -154,14 +156,7 @@ class FloatingMenuController: UIViewController {
     func closeButtonPressed(sender:FloatingButton!){
         delegate?.floatingCancelButtonPressed(sender)
         
-        configureButtons(initial: false)
-        
-        UIView.animateWithDuration(2.0, animations: { () -> Void in
-            self.configureButtons(initial:true)
-            
-            }) { (Bool) -> Void in
-                self.dismissViewControllerAnimated(true, completion: nil)
-        }
+     	dismiss()
         
         
     }
@@ -169,6 +164,17 @@ class FloatingMenuController: UIViewController {
     func menuButtonPressed(sender:FloatingButton!){
         if let index = floatingButtons.indexOf(sender) {
             delegate?.floatingMenuButtonPressed(sender, index: index)
+        }
+    }
+    
+    func dismiss(){
+        configureButtons(initial: false)
+        
+        UIView.animateWithDuration(2.0, animations: { () -> Void in
+            self.configureButtons(initial:true)
+            
+            }) { (Bool) -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 
